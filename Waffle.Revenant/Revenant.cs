@@ -102,7 +102,7 @@ namespace Waffle.Revenant
         {
             get
             {
-                return _currentPredicted
+                return _currentPredicted;
             }
         }
         
