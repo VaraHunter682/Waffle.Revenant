@@ -97,7 +97,16 @@ namespace Waffle.Revenant
                 return (1f / 24f) / SpeedMultiplier;
             }
         }
-
+        
+        private EnemyTarget target
+        {
+            get
+            {
+                return _currentPredicted
+            }
+        }
+        
+        
         public void Start()
         {
             Machine = GetComponent<Machine>();
@@ -704,7 +713,7 @@ namespace Waffle.Revenant
 
             yield return new WaitForSeconds(_frameTime * 5); // 5 frames
 
-            _currentPredicted = PlayerTracker.Instance.PredictPlayerPosition(0.5f);
+            _currentPredicted = EnemyTarget.TrackPlayer(0.5f);
             ForwardBoost = 60f;
             LeftArmSwing.DamageStart();
             CreateRandomSwing();
@@ -721,7 +730,7 @@ namespace Waffle.Revenant
 
             yield return new WaitForSeconds(_frameTime * 5); // totals to 31 frames
             LookAtPlayer = true;
-            _currentPredicted = PlayerTracker.Instance.PredictPlayerPosition(0.5f);
+            _currentPredicted = EnemyTarget.TrackPlayer(0.5f);
 
             ForwardBoost = 60f;
             if (Machine.parryable)
