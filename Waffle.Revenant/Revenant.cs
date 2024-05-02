@@ -764,7 +764,7 @@ namespace Waffle.Revenant
                 yield return new WaitForSeconds(0.1f / SpeedMultiplier);
             }
 
-            _currentPredicted = PlayerTracker.Instance.PredictPlayerPosition(1f);
+            _currentPredicted = EnemyTarget.TrackPlayer(1f);
             LookAtPlayer = true;
             Machine.anim.SetTrigger("Melee3");
 
